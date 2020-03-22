@@ -1,0 +1,44 @@
+---
+title: "CKME INITIAL PT 2"
+author: "Brody Reid"
+date: "March 13, 2020"
+output: word_document
+---
+
+## INCOME
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+income <- read.csv("C:/Users/Brody/Documents/CKME136/DATASETS FOR ECONOMIC SUCCESS/income/income.csv")
+```
+
+Rename.
+```{r}
+names(income)[1] <- "Date"
+names(income)[2] <- "Geo"
+names(income)[5] <- "Type"
+names(income)[12] <- "Value"
+```
+
+Select attributes we want.
+```{r}
+income <- income[, c("Date", "Geo", "Sex", "Type", "Value")]
+```
+
+toronto: Use SQLdf to filter by all sexes and median income.
+```{r}
+toronto_income <- sqldf("SELECT Date, Value FROM income WHERE Sex = 'Both sexes' AND Type = 'Median total income of tax filers with total income' AND Geo GLOB 'Toronto*' GROUP BY Date")
+```
+
+Toronto.
+```{r}
+#toronto_income <- sqldf("SELECT * FROM income_filter WHERE Geo GLOB 'Toronto*' GROUP BY Date")
+```
+
+```{r}
+toronto_income <- toronto_income[-1 ,]
+```
+

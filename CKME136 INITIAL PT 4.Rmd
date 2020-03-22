@@ -1,0 +1,33 @@
+---
+title: "CKME136 INITIAL PT 4"
+author: "Brody Reid"
+date: "March 15, 2020"
+output: word_document
+---
+
+## ACTIVITY
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+activity <- read.csv("C:/Users/Brody/Documents/CKME136/AIRPORT ACTIVITY/activity.csv")
+```
+
+```{r}
+names(activity)[1] <- "Date"
+```
+```{r}
+activity <- activity[, -c(4:7)]
+```
+
+Toronto
+```{r}
+toronto_activity <- sqldf("SELECT Date, SUM(Value) as Value FROM activity WHERE Geo GLOB 'TORONTO*' GROUP BY Date")
+```
+
+```{r}
+toronto_activity <- toronto_activity[-1 ,]
+```
+

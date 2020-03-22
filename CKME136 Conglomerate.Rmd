@@ -1,0 +1,78 @@
+---
+title: "CKME136 Conglomerate"
+author: "Brody Reid"
+date: "March 13, 2020"
+output: word_document
+---
+
+## CONGLOMERATE
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Toronto full.
+```{r}
+toronto_full <- cbind(toronto_income, toronto_employed$Value, toronto_movements$Value, toronto_activity$Value)
+```
+```{r}
+names(toronto_full)[2] <- "Income"
+names(toronto_full)[3] <- "Employed"
+names(toronto_full)[4] <- "Movements"
+names(toronto_full)[5] <- "Activity"
+```
+
+Create normalize function.
+```{r}
+normalize <- function(x){
+        x/sqrt(sum(x^2))
+}
+```
+
+
+```{r}
+#economic_index <- Income/Employment
+```
+
+Matrix plot.
+```{r}
+pairs(toronto_full)
+```
+
+```{r}
+model1 <- lm(Income ~ Movements + Activity, data = toronto_full)
+```
+
+```{r}
+summary(model1)
+```
+
+Appears that movements is not significant
+```{r}
+fig <- plot_ly(toronto_full, x = ~Activity, y = ~Movements, z = ~Income)
+fig <- fig %>% add_markers()
+fig <- fig %>% layout(scene = list(xaxis = list(title = 'Activity'),
+                     yaxis = list(title = 'Movements'),
+                     zaxis = list(title = 'Income')))
+
+fig
+```
+
+```{r}
+model2 <- lm(Employed ~ Activity + Movements, data = toronto_full)
+```
+```{r}
+summary(model2)
+```
+
+```{r}
+fig <- plot_ly(toronto_full, x = ~Activity, y = ~Movements, z = ~Employed)
+fig <- fig %>% add_markers()
+fig <- fig %>% layout(scene = list(xaxis = list(title = 'Activity'),
+                     yaxis = list(title = 'Movements'),
+                     zaxis = list(title = 'Employed')))
+
+fig
+```
+
+Again, movements doesn't seem needed for the model at all...
