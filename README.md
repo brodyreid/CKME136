@@ -20,6 +20,8 @@ https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1110023901
 - Number of employed persons per city in thousands (yearly):
 https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410031201
 
+- GDP of Canadian Cities (yearly):
+https://www.statista.com/statistics/652751/real-gdp-of-toronto-ontario/
 
 ### Method
 1. Clean the structured and unstructured datasets using `R`.
