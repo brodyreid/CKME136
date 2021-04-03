@@ -19,10 +19,9 @@ All of the airport-level datasets were sourced from the Government of Canada’s
 - [GDP of Canadian Cities (yearly)](https://www.statista.com/statistics/652751/real-gdp-of-toronto-ontario/)
 
 ### Method
-1. Clean the structured and unstructured datasets using `R`.
-2. Select attributes in `Weka`.
-3. Apply multiple linear regressions in `R`.
-4. Visualize the results in `R` and `Excel`.
+1. Clean the datasets and select attributes in `R`.
+2. Apply multiple linear regressions in `R` and check the strength of the model.
+3. Visualize the results in `R` and `Excel`.
 
 ### Results
 It was determined that in major Canadian cities, with all else equal, a 10% increase in passenger activity produces a 1%-4% increase in individual median income and a 0.5%-1% increase in employment.
