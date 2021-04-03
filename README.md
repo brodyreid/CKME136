@@ -9,7 +9,7 @@ I developed a model to predict a city’s economic growth given its airport’s 
 All of the airport-level datasets were sourced from the Government of Canada’s Open Data Portal and were structured. The economic-level datasets were sourced from a third-party and were unstructured.
 
 ### Method
-1. Clean the structured and unstructured datasets using `Pandas`.
+1. Clean the structured and unstructured datasets using `R`.
 2. Select attributes in `Weka`.
 3. Apply multiple linear regressions in `R`.
 4. Visualize the results in `R` and `Excel`.
